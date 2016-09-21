@@ -1,10 +1,13 @@
 Robot :
   - Arduino UNO
-  - Capteur d'ultrasons
+  - Emetteur/récepteur d'ultrasons
   - Roues x5 (2 motrices + 3 stabilisatrices)
   - Moteur
   - Servomoteur
-  - Batterie
+  - ACCU
   - Structure en plastique (PVC?) noir 
 Bracelet :
-  -
+  - Arduino MICRO
+  - Emetteur/récepteur d'ultrasons
+  - ACCU 5V
+  - Structure plastique
