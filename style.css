@@ -1,3 +1,9 @@
+body {
+  margin: none;
+}
+header {
+  background-color: #B2123C;
+}
 nav ul {
   list-style-type: none;
 }
