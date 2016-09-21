@@ -1,4 +1,10 @@
 Robot :
-  -
+  - Arduino UNO
+  - Capteur d'ultrasons
+  - Roues x5 (2 motrices + 3 stabilisatrices)
+  - Moteur
+  - Servomoteur
+  - Batterie
+  - Structure en plastique (PVC?) noir 
 Bracelet :
   -
