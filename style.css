@@ -1,10 +1,10 @@
 body {
-  margin: none;
+  margin: 0;
 }
 header {
   background-color: #B2123C;
   color: #FFF;
-  margin: none;
+  margin: 0;
 }
 nav ul {
   list-style-type: none;
