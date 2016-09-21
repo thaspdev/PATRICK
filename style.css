@@ -3,6 +3,8 @@ body {
 }
 header {
   background-color: #B2123C;
+  color: #FFF;
+  margin: none;
 }
 nav ul {
   list-style-type: none;
