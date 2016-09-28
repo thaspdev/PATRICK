@@ -1,1 +1,5 @@
-http://arduino.stackexchange.com/questions/16270/sets-of-ultrasonic-frequencies-using-arduino-uno
+1) http://arduino.stackexchange.com/questions/16270/sets-of-ultrasonic-frequencies-using-arduino-uno
+régler la fréquence du buzzer
+
+2) http://0310036w.esidoc.fr/search.php?pid=&action=Record&id=MF_MF1502041406438_2014&num=5&total=5
+revue sur l'arduino et les fréquences.
