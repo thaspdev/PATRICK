@@ -5,7 +5,9 @@
 *8 pour connecter 2 moteur DC
 *direction :
   -Pas à pas : 6
-  -servo : 3
+  ->servo : 3
 *affichage :
-  - 7 segments : 12
+  -> 7 segments : 12
   - cristaux liquides : 16
+
+TOTAL : 27
