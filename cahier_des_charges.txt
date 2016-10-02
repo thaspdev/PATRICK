@@ -1,5 +1,5 @@
 Robot :
-  - Arduino UNO
+  - Raspberry Pi
   - Emetteur/récepteur d'ultrasons
   - Roues x5 (2 motrices + 3 stabilisatrices)
   - Moteur
@@ -7,7 +7,7 @@ Robot :
   - ACCU
   - Structure en plastique (PVC?) noir 
 Bracelet :
-  - Arduino MICRO
+  - Arduino UNO
   - Emetteur/récepteur d'ultrasons
   - ACCU 5V
   - Structure plastique
