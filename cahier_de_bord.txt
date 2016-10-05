@@ -5,4 +5,11 @@ Nous avons créé le cahier des charges. Nous avons choisi une solution techniqu
 
 28/09/16
 
-Nous avons cherché des livres sur le catalogue du CDI des livres qui pourraient être utile à notre projet. (links.txt n°2) 
+*Nous avons cherché des livres sur le catalogue du CDI des livres qui pourraient être utile à notre projet. (links.txt n°2) 
++ détermination expérimentale de la vitesse du son
+*Test avec Le kit arduino : allumage de LED + servo
+
+05/10/16
+
+*Mise en marche du servo + moteur DC
+*Mise en mache du stepper + afficher 7 segment 4 digits
