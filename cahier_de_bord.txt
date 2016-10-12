@@ -1,3 +1,6 @@
+14/09/16
+
+Recherches sur les relations d'Al-Kashi qui nous permettront de connaître l'angle de rotation du servo moteur pour qu'il puisse orienter ses roues vers sa destination.
 
 21/09/16
 
@@ -17,5 +20,6 @@ Nous avons créé le cahier des charges. Nous avons choisi une solution techniqu
 
 12/10/16
 
-*
+*Mise en marche afficheur 7 segments 4 digits
+*test Buzzer + boutons poussoir (utilité pour le bracelet)
 
