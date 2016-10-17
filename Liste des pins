@@ -1,4 +1,4 @@
-1)Raspberry:
+1)Arduino MEGA:
 
 *2 pour émetteur
 *2 pour récepteur
@@ -10,9 +10,9 @@
   -> 7 segments : 12
   - cristaux liquides : 16
 
-TOTAL : 27/40
+TOTAL : 27/54
 
-2) Arduino:
+2) Arduino UNO:
 *2 pour émetteur
 *2 pour récepteur
 *2 pour LED 
