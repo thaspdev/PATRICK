@@ -1,5 +1,5 @@
 Robot :
-  - Raspberry Pi
+  - Raspberry Pi remplacé par Genuino MEGA car il chauffait trop
   - Emetteur/récepteur d'ultrasons
   - Roues x5 (2 motrices + 3 stabilisatrices)
   - Moteur
