@@ -26,5 +26,5 @@ Nous avons créé le cahier des charges. Nous avons choisi une solution techniqu
 
 19/10/16
 
-*Simulation montage robot avec arduino mega : montage moteur + servo. Commande de l'angle de rotation du servo avec Formule d'Al-Kashi et test avec différentes valeur de a et de b. 
+*Simulation montage robot avec arduino mega : montage moteur + servo. Commande de l'angle de rotation du servo avec Formule d'Al-Kashi et test avec différentes valeurs de a et de b. 
 
