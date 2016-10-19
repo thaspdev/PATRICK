@@ -21,5 +21,10 @@ Nous avons créé le cahier des charges. Nous avons choisi une solution techniqu
 12/10/16
 
 *Mise en marche afficheur 7 segments 4 digits
-*test Buzzer + boutons poussoir (utilité pour le bracelet)
+*test Buzzer + boutons poussoir (utilité pour le bracelet).
+*Problème de stockage avec l'arduino uno. Recherche de solution : Genuino mega
+
+19/10/16
+
+*Simulation montage robot avec arduino mega : montage moteur + servo. Commande de l'angle de rotation du servo avec Formule d'Al-Kashi et test avec différentes valeur de a et de b. 
 
