@@ -1,0 +1,136 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}%pour la programmation
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+
+\author{Quentin Barri\`ere, Gr\'egoire Charleux, Yannis Lamoussi\`ere,\\ Mathis Pastorelli}
+\date{\(2016-2017\)}
+
+\renewcommand{\contentsname}{Sommaire}
+
+\begin{document}
+	\title{Dossier de pr\'esentation de TPE \\ ------------ \\ \Large Robot d'assistance \`a localisation par reconnaissance faciale}
+	\maketitle
+	
+	\newpage
+	
+	\tableofcontents
+	
+	\newpage
+	
+	\section*{Introduction}
+	
+	\section{Pr\'esentation du projet}
+	
+	\subsection{L'id\'ee}
+	
+	\subsection{Historique}
+	
+	\section{Ce que nous avons fait}
+	
+	\subsection{M\'ecanique}
+	
+	\nopagebreak
+	\hfill Gr\'egoire Charleux
+	
+	\subsection{\'Electronique}
+	
+	\nopagebreak
+	\hfill Yannis Lamoussi\`ere
+	
+	\subsection{Programmation}
+	
+	\indent\indent En ce qui concerne la programmation, le projet utilisera plusieurs langages : Python, pour le code du robot ainsi que pour le programme version ordinateur, Java, pour l'application Android, ainsi que le HTML, le CSS et le PHP pour le site internet, avec sûrement l'intégration de quelques commandes Bash pour la génération de fichier de reconnaissance faciale, et des requêtes SQL pour accéder à la base de données.
+	
+	En premier lieu, le programme du robot utilisera le langage interprété Python, accompagné de nombreux modules, faisant partie, pour la plupart, de la bibliothèque standard, bien qu'au moins deux n'en fassent pas partie \nolinebreak : OpenCV et Bluez. Le premier sert à la reconnaissance faciale ; c'est un module (une librairie) développé par Intel qui permet, entre autres, de reconnaître des visages dans une image (ou, dans ce càs-là, une vidéo), et ce notamment grâce au Deep Learning. Le second module, quant à lui, sert à la gestion du bluetooth ainsi que d'une connexion (bluetooth), ce qui permet de se connecter à un autre appareil bluetooth, tel qu'un smartphone sous Android, ou un ordinateur disposant d'un adaptateur bluetooth. Le programme est pour l'instant divisé en ................................................ fichiers que j'ai tous codés, sauf mention contraire :
+	
+	- arduino.py est un fichier contenant des classes (pour l'instant au nombre de quatre: Arduino, Stepper, Servo et Motor) que j'ai crées afin de rendre le code plus facile à comprendre, grâce à la Programmation Orientée Objet (POO). La POO permet de masquer le fonction d'une fonction ou plus généralement d'un algorithme, ce qui rend le programme plus clair et compréhensible.
+	
+	- lcd.py est un fichier contenant une classe (Lcd) permettant d'afficher des messages sur un écran LCD. J'ai ainsi suivi un tutoriel expliquant le fonctionnement d'un écran LCD avec un Raspberry Pi et chaque instruction a un rôle précis et est nécessaire au bon fonctionnement de l'écran. L'on pourrait donc considérer cette partie du code comme étant la seule que je n'aurais pas codée par moi-même, cependant je tiens à ajouter que, d'une part, je comprends le role de chaque instruction de ce code, et, d'autre part, sa rédaction n'était pas orientée objet, j'ai donc tout de même adapté ce code pour le faire correspondre à une programmation orientée objet.
+	
+	- menu.py est un fichier contenant également une classe permettant de gérer un menu sur un écran LCD ainsi que de défiler dans ce dernier.
+	
+	- menu\_handler.py est un fichier contenant
+	
+	- arduino\_communication.py est un fichier contenant
+	
+	- bluetooth\_communication.py est un fichier
+	
+	- wi\_fi\_communication.py est un fichier
+	
+	- robot.py
+
+---------------------------------------	
+	ANDROID
+---------------------------------------
+
+	Enfin, en ce qui concerne le site internet, je ne juge pas intéressant de vous expliquer son fonctionnement en détail (dans ce court dossier en particulier ; je l'expliquerai évidemment dans le dossier final à rendre au jury). En effet, il s'agit pour l'instant presque exclusivement d'un ensemble de fichiers php et css dont la seule fonction (pour l'instant) et d'afficher des pages web, ce qui ne présente pas un grand intérêt quant à la compréhension du fonctionnement du robot.
+	
+	Pour terminer, voici une partie du code du robot, qui est disponible, comme tout les autres fichiers, à l'adresse suivante : https://thaspdev.github.io/TPE.
+	
+	
+	\begin{lstlisting}
+
+
+	\end{lstlisting}
+	
+	%\nopagebreak\\[0.5cm]
+	\nopagebreak\hfill Mathis Pastorelli
+
+	\subsection{Consruction du robot}
+	
+	\nopagebreak
+	\hfill Quentin Barri\`ere
+	
+	\section{Ce qu'il nous reste \`a faire}
+	
+	\subsection{Mat\'eriel}
+	
+	\subsection{Programmation}
+	
+	\subsection{Construction du robot}	
+	
+	%\section{Id\'ees d'am\'elioration}
+	
+\end{document}
