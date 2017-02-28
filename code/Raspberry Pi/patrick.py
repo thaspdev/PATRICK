@@ -40,6 +40,8 @@ while True: #On effectue une boucle infinie, qui cherchera toujours à transmett
         message_dv = queue_dv[1].get(block=False)
         if message_dv[:6] == "VISAGE": #Si le thread de détection de visage a détecté un visage
             queue_ard[0].put(message_dv) #On transmet le message (contenant notamment l'angle auquel se trouve ce visage) à l'arduino
+        elif message_dv[:6] == "FINVSG":
+            queue_ard[0].put("FINVSG")
     except:
         message_dv = "" #Même chose que précédemment
     try:

@@ -23,7 +23,7 @@ def thread(queue): #queue permettant de communiquer avec le programme "central" 
             patrick_message = queue[0].get(block=False) #On essaie d'obtenir un message (une chaîne de caractères) depuis la queue stockant les messages venant de patrick.py destinés à arduino_communication.py. Cependant, s'il n'y a pas de messsage, cela provoque une erreur lorque le paramètre block de la fonction get vaut faux (False). De plus, lorsque ce dernier vaut vrai (True), cette fonction get bloque le déroulement du programme jusqu'à recevoir un message, or, cette partie du programme ne doit pas être interrompue, auquel cas elle n'enverrait plus de signal au moteur pas à pas afin qu'il tourne, ce qui empêcherait à face_detection.py de bien détecter les visages
         except:
                 patrick_message = "" #Si une erreur se produit, on donne à patrick_message la valeur "", c'est-à-dire une chaîne de caractères vide.
-        if patrick_message[:7] == "FACE_AT": #Si les 7 permiers caractères de patrick_message valent "VISAGE", alors cela signifie que détection_visage.py a détecté un visage à l'angle précisé dans la suite du message
+        if patrick_message[:7] == "VISAGE": #Si les 7 permiers caractères de patrick_message valent "VISAGE", alors cela signifie que détection_visage.py a détecté un visage à l'angle précisé dans la suite du message
             angle_stepper = int(stepper_caméra.obtenir_angle()*(2/3)) #On stocke l'angle du moteur pas à pas dans une variable. Il faut cependant noter le fait que cet angle est exprimé en nombre de pas (270 pour un demi-tour ; 540 pour un tour complet), et qu'on doit le convertir en degrés en le multipliant par $\color{red}\dfrac{2}{3}$ (En effet, $\color{red} 270 \times \dfrac{2}{3} = 180$ et $\color{red} 540 \times \dfrac{2}{3} = 360$
             angle_visage = float(patrick_message[8:]) #Le message étant de la forme "Visage:90" (pour un angle de 90 degrés, par exemple), l'angle se trouve dans la sous chaîne de caractères commençant à la position 8
             angle = stepper_angle + angle_visage #L'angle donné par le message est celui de la caméra. Cependant, pour obtenir l'angle duquel les roues doivent tourner, il faut lui ajouter l'angle du moteur pas à pas (cet angle est stocké dans un fichier et est défini arbitrairement, en fonction d'une droite donnant la position de l'angle 0 et étant la médiatrice sur un plan horizontal du côté du robot où se trouve la poignée)
@@ -37,8 +37,12 @@ def thread(queue): #queue permettant de communiquer avec le programme "central" 
                 angle_servo_direction
                 moteur_roues.tourner(inverse=False)
             servo_soulèvement_roues.write(30) #On abaisse le servomoteur permettant de lever les roues afin que ces dernières soient en contact avec le sol
-            time.sleep(10)
-            moteur_roues.stop()
+            moteur_tourne = True
+            while moteur_tourne:
+                patrick_message = queue[0].get(block=True) #On attend un message du thread principal
+                if patrick_message == "FINVSG":#Quand on reçoit le bon message
+                    moteur_tourne = False #On sort de la boucle, afin d'arrêter le moteur
+            moteur_roues.stop()#On arrête le moteur
         elif patrick_message[:9] == "SEQUENCE:": #Pour le contrôle via Android. J'ai appelé cela "SEQUENCE" car il s'agit d'une séquence d'instructions que doit envoyer le Raspberry Pi à l'Arduino
             if patrick_message[10:] == "RAG-START": #RAG signifie Rotation dans le sens des AiGuilles d'une montre (RAG), START signifiant son début
                 servo_soulèvement_roues.write(0) #On monte les roues afin qu'elles ne touchent pas le sol
