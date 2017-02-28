@@ -36,7 +36,9 @@ def thread(queue):
                             visage_détecté = True
                             break
                 elif len(visages) == 0:
-                        queue[1].put("FINVSGE")
+                    queue[1].put("FINVSGE")
+                else:
+                    visage_détecté = False
                         
 
                 captureCaméra.truncate(0) #On vide le flux d'images
