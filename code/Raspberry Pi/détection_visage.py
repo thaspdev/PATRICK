@@ -27,26 +27,23 @@ def thread(queue):
                 image = frame.array
 
                 gris = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #On crée une version de l'image en teintes de gris
+                visages = cascade_visage.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
 
-                if not face_detected:
-                    visages = cascade_visage.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
-
-                    for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant ; 
-                        if not face_detected:
-                            face_angle = (32-((640-(x+l))/10))
-                            face_detected = True
-                            profile_face_detected = False
-                            time_face_detected = time.time()
-                            queue[1].put("VISAGE:"+str(face_angle))
+                for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant ;
+                    face_angle = (32-((640-(x+l))/10))
+                    face_detected = True
+                    profile_face_detected = False
+                    time_face_detected = time.time()
+                    queue[1].put("VISAGE:"+str(face_angle))
                             
 
-                rawCapture.truncate(0) #On vide le flux d'images
+                captureCaméra.truncate(0) #On vide le flux d'images
 
                 try:                
                     message = queue[0].get(block=False)
                     print(message)
                     if message == "DV:STOP":
-                        enabled = False
+                        activée = False
                         break #On sort de la boucle for afin d'arrêter la capture d'images
                 except:
                     continue
