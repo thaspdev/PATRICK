@@ -14,7 +14,7 @@ def thread(queue):
     camera.framerate = 60
     camera.hflip=True #On retourne l'image envoyée par la caméra horizontalement,
     camera.vflip=True #puis verticalement. En effet, sur le robot, la caméra est placée à l'envers
-    rawCapture = PiRGBArray( camera, size=( 640, 480 ) )
+    captureCaméra = PiRGBArray( camera, size=( 640, 480 ) )
 
     face_cascade = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
 
@@ -22,7 +22,7 @@ def thread(queue):
     
     while True:
         if activée:
-            for frame in rawCapture, format="bgr", use_video_port=True ):
+            for frame in camera.capture_continuous(captureCaméra, format="bgr", use_video_port=True ):
 
                 image = frame.array
 
