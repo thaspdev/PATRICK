@@ -9,27 +9,27 @@ def thread(queue):
     activée = True #Variable permettant de savoir si la détection de visages est activée
     visage_détecté = False
 
-    camera = PiCamera()
-    camera.resolution = ( 640, 480 )
-    camera.framerate = 60
-    camera.hflip=True #On retourne l'image envoyée par la caméra horizontalement,
-    camera.vflip=True #puis verticalement. En effet, sur le robot, la caméra est placée à l'envers
-    captureCaméra = PiRGBArray( camera, size=( 640, 480 ) )
+    caméra = PiCamera()
+    caméra.resolution = ( 640, 480 )
+    caméra.framerate = 60
+    caméra.hflip=True #On retourne l'image envoyée par la caméra horizontalement,
+    caméra.vflip=True #puis verticalement. En effet, sur le robot, la caméra est placée à l'envers
+    captureCaméra = PiRGBArray( caméra, size=( 640, 480 ) )
 
-    face_cascade = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
+    cascade_viasge = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
 
     temps_démarrage = time.time()
     
     while True:
         if activée:
-            for frame in camera.capture_continuous(captureCaméra, format="bgr", use_video_port=True ):
+            for frame in caméra.capture_continuous(captureCaméra, format="bgr", use_video_port=True ):
 
                 image = frame.array
 
                 gris = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #On crée une version de l'image en teintes de gris
 
                 if not face_detected:
-                    visages = face_cascade.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
+                    visages = cascade_viasge.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
 
                     for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant ; 
                         if not face_detected:
