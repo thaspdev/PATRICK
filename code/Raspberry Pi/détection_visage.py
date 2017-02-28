@@ -10,7 +10,7 @@ def thread(queue):
     visage_détecté = False
 
     caméra = PiCamera()
-    caméra.resolution = ( 640, 480 )
+    caméra.resolution = ( 640, 480 ) #On définit la résolution de l'image
     caméra.framerate = 60
     caméra.hflip=True #On retourne l'image envoyée par la caméra horizontalement,
     caméra.vflip=True #puis verticalement. En effet, sur le robot, la caméra est placée à l'envers
@@ -18,7 +18,7 @@ def thread(queue):
 
     cascade_visage = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
 
-    temps_démarrage = time.time()
+    visage_détecté = True
     
     while True:
         if activée:
@@ -29,13 +29,15 @@ def thread(queue):
                 gris = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #On crée une version de l'image en teintes de gris
                 visages = cascade_visage.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
 
-                for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant ;
-                    face_angle = (32-((640-(x+l))/10))
-                    face_detected = True
-                    profile_face_detected = False
-                    time_face_detected = time.time()
-                    queue[1].put("VISAGE:"+str(face_angle))
-                            
+                if not visage_détecté:
+                    for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant (x;y) le point de départ, l la largeur, h la hauteur;
+                            angle_visage = (32-((640-(x+l))/10))
+                            queue[1].put("VISAGE:"+str(angle_visage))
+                            visage_détecté = True
+                            break
+                elif len(visages) == 0:
+                        queue[1].put("FINVSGE")
+                        
 
                 captureCaméra.truncate(0) #On vide le flux d'images
 
@@ -50,4 +52,4 @@ def thread(queue):
         else:
             message = queue[0].get(block=True)
             if message == "DV:START": #On attend un signal pour réactiver la détection de visages
-                enabled = True
+                activée = True
