@@ -16,7 +16,7 @@ def thread(queue):
     caméra.vflip=True #puis verticalement. En effet, sur le robot, la caméra est placée à l'envers
     captureCaméra = PiRGBArray( caméra, size=( 640, 480 ) )
 
-    cascade_viasge = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
+    cascade_visage = cv2.CascadeClassifier('/home/pi/Programs/opencv/data/haarcascades/haarcascade_frontalface_alt.xml') #On charge le fichier permettant de détecter un visage
 
     temps_démarrage = time.time()
     
@@ -29,7 +29,7 @@ def thread(queue):
                 gris = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) #On crée une version de l'image en teintes de gris
 
                 if not face_detected:
-                    visages = cascade_viasge.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
+                    visages = cascade_visage.detectMultiScale(gris) #L'analyse d'une image en teintes de gris est plus rapide que celle d'une image en couleurs
 
                     for ( x, y, l, h ) in visages: #Chaque visage détecté possède 4 coordonées, celles du rectangle l'encadrant ; 
                         if not face_detected:
