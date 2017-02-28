@@ -36,7 +36,7 @@ def thread(queue):
                             visage_détecté = True
                             break
                 elif len(visages) == 0:
-                    queue[1].put("FINVSGE")
+                    queue[1].put("FINVSG")
                 else:
                     visage_détecté = False
                         
