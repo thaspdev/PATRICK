@@ -54,13 +54,13 @@ while True: #On effectue une boucle infinie, qui cherchera toujours à transmett
             elif message_bt[10:]=="AR-START":
                 queue_ard[0].put("ARDUINO:MO:INV")
             elif message_bt[10:]=="RAG-START": #RAG signifie Rotation dans le sens des AiGuilles d'une montre
-                queue_ard[0].put("SEQUENCE:RLE-START")
+                queue_ard[0].put("SEQUENCE:RAG-START")
             elif message_bt[10:]=="RAG-STOP":
-                queue_ard[0].put("SEQUENCE:RLE-STOP")
+                queue_ard[0].put("SEQUENCE:RAG-STOP")
             elif message_bt[10:]=="RCA-START": #RCA signifie Rotation dans le sens Contraire à celui des Aiguilles d'une montre
-                queue_ard[0].put("SEQUENCE:RLE-START")
+                queue_ard[0].put("SEQUENCE:RCA-START")
             elif message_bt[10:]=="RCA-STOP":
-                queue_ard[0].put("SEQUENCE:RLE-STOP")
+                queue_ard[0].put("SEQUENCE:RCA-STOP")
     except:
         message_bt = "" #Même chose que précédemment
         
