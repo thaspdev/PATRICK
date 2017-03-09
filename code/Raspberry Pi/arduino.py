@@ -10,7 +10,7 @@ class Arduino:
             try:
                 self.serial = serial.Serial('/dev/ttyACM0', 9600)
             except:
-                raise ConnectionError("Could not connect to the arduino. Maybe you should have chosen ACM1 instead of ACM0")#Oui, je mets mes messages d'erreur en anglais (mes noms de variables, fonctions, etc. aussi par ailleurs)
+                raise ConnectionError("Could not connect to the arduino. Maybe you should have chosen ACM1 instead of ACM0")
         elif self.DEV == 1:#Si le paramaètre vaut 1, on essaye de "se connecter" uniquement à l'arduino sur /dev/ttyAMC1
             try:
                 self.serial = serial.Serial('/dev/ttyACM1', 9600)
@@ -34,16 +34,16 @@ class Stepper:#moteur pas à pas
     def __init__(self,arduino,num): #fonction d'initialisation
         self.arduino = arduino #on spécifie l'arudino (l'objet) sur lequel est connecté le moteur
         self.number = num #on spécifie le numéro du moteur
-        self.filename = "stepper"+str(self.number) #nom du fichier qui va stocker l'angle
-        self.anglefile = open(self.filename,'r')#À garder??? -> peut être optimisé
-        self.numstr=""
+        self.nom_du_fichier = "stepper"+str(self.number) #nom du fichier qui va stocker l'angle
+        self.anglefile = open(self.nom_du_fichier,'r')#peut être optimisé
+        self.numstr=""#Numéro du moteur pas à pas en version chaîne de caractères, 1 devient 01, 2 devient 02 etc., mais 10 reste 10, 11 reste 11 etc.
         if self.number < 10:
             self.numstr="0"+str(self.number)
         else:
             self.numstr=str(self.number)
         self.write(0)
-##        with open(self.filename,'w') as file:
-##            if os.stat(self.filename) == 0:
+##        with open(self.nom_du_fichier,'w') as file:
+##            if os.stat(self.nom_du_fichier) == 0:
 ##                file.seek(0,0)
 ##                file.truncate()
 ##                file.write("0")
@@ -51,18 +51,18 @@ class Stepper:#moteur pas à pas
     
     def write(self,angle):#fonction servant à donner un angle au stepper
         angle_to_add = angle - self.getangle() #l'angle à ajouter vaut l'angle à donner moins l'angle actuel 
-        with open(self.filename,'w') as file: #on modifie l'angle dans le fichier
-            file.seek(0,0)
-            file.truncate()
-            file.write(str(angle))
-            file.close()
+        with open(self.nom_du_fichier,'w') as file: #on modifie l'angle dans le fichier
+            file.seek(0,0)#On place le curseur en position 0 de la première ligne du fichier
+            file.truncate()#On efface tout le texte se trouvant après le curseur (c'est-à-dire, ici, tout le texte)
+            file.write(str(angle))#On écrit l'angle choisi
+            file.close()#On ferme le fichier
         writestr = "ST" + self.numstr + ":" + str(angle_to_add) #chaîne de caractères envoyée à l'arduino afin de faire tourner le stepper
         self.arduino.message(writestr) #on envoie la chaîne
     
     def getangle(self): #fonction servant à obtenir l'angle en question
         if len(self.anglefile.readlines()) > 0: #si il y a un angle écrit dans le fichier
 ##            print(self.anglefile.readlines()) #débogage
-            with open(self.filename,"r") as file:
+            with open(self.nom_du_fichier,"r") as file:
                 return float(file.readlines()[0]) #on retourne l'angle
         else:
             return 0 #sinon on retourne 0
