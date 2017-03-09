@@ -10,12 +10,12 @@ class Arduino:
             try:
                 self.serial = serial.Serial('/dev/ttyACM0', 9600)
             except:
-                raise ConnectionError("Could not connect to the arduino. Maybe you should have chosen ACM1 instead of ACM0")
+                raise ConnectionError("Connexion à l'Arduino impossible. Essayez de vous connecter à ACM1 au lieu de ACM0, en utilisant le paramètre 1 de la fonction.")
         elif self.DEV == 1:#Si le paramaètre vaut 1, on essaye de "se connecter" uniquement à l'arduino sur /dev/ttyAMC1
             try:
                 self.serial = serial.Serial('/dev/ttyACM1', 9600)
             except:
-                raise ConnectionError("Could not connect to the arduino. Maybe you should have chosen ACM0 instead of ACM1")
+                raise ConnectionError("Connexion à l'Arduino impossible. Essayez de vous connecter à ACM1 au lieu de ACM0, en utilisant le paramètre 0 de la fonction.")
         else:#Sinon, on essaye de "se connecter" sur /dev/ttyAMC0 puis /dev/ttyAMC1 si le premier ne fonctionnne pas
             try:
                 self.serial = serial.Serial('/dev/ttyACM0', 9600)
@@ -23,7 +23,7 @@ class Arduino:
                 try:
                     self.serial = serial.Serial('/dev/ttyACM1', 9600)
                 except:
-                    raise ConnectionError("Could not connect to the arduino. It is probably not plugged in. You can check that by typing \"ls /dev/ | grep ACM\" in your terminal.")
+                    raise ConnectionError("Connexion à l'Arduino impossible. Vous pouvez vérifier cela en tapant la commande \"ls /dev/ | grep ACM\" dans votre terminal.")
         
     def message(self, message, delay = 1):#cette fonction sert à communiquer avec l'arduino (lui envoyer un message)
         time.sleep(delay)
