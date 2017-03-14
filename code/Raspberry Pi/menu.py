@@ -9,8 +9,8 @@ class Menu:
         self.HAUT = HAUT
         self.BAS = BAS
 
-        GPIO.setup(self.HAUT, GPIO.IN, pull_HAUT_BAS=GPIO.PUD_DOWN)
-        GPIO.setup(self.BAS, GPIO.IN, pull_HAUT_BAS=GPIO.PUD_DOWN)
+        GPIO.setup(self.HAUT, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+        GPIO.setup(self.BAS, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
         
         self.définirMenu(args)
         self.afficher()

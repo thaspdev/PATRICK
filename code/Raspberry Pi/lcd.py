@@ -33,16 +33,16 @@ class Lcd:
         GPIO.setup(self.D6, GPIO.OUT)
         GPIO.setup(self.D7, GPIO.OUT)
 
-        self.écrire(0x33,self.CMD) # 110011 Initialise
-        self.écrire(0x32,self.CMD) # 110010 Initialise
-        self.écrire(0x06,self.CMD) # 000110 Cursor move direction
-        self.écrire(0x0C,self.CMD) # 001100 Display On,Cursor Off, Blink Off
+        self.écrire(0x33,self.CMD)
+        self.écrire(0x32,self.CMD)
+        self.écrire(0x06,self.CMD)
+        self.écrire(0x0C,self.CMD)
         self.écrire(0x28,self.CMD) # On précise le mode d'utilisation de l'écran. Ici on lui fait savoir qu'on l'utilisera en 4 bits (avec 4 fils de transmission de données connectés) sur deux lignes
         self.écrire(0x01,self.CMD) # Cette commande permet d'effacer le contenu de l'écran
         time.sleep(self.E)
 
     def écrire(self, bits, mode):
-        GPIO.output(self.RS, mode) #On envoie au pin RS le mode (c'est-à-dire soit commande, soit écriture)
+        GPIO.output(self.RS, mode) (c'est-à-dire soit commande, soit écriture)
 
         GPIO.output(self.D4, False) #On envoie aux pins de données la valeur 0 afin que cela soit leur valeur par défaut lors de l'écriture
         GPIO.output(self.D5, False)
